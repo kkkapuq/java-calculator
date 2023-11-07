@@ -8,6 +8,12 @@ repositories {
     mavenCentral()
 }
 
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
 dependencies {
     testImplementation 'org.assertj:assertj-core:3.22.0'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
@@ -15,10 +21,11 @@ dependencies {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(11)
+        languageVersion = JavaLanguageVersion.of(17)
     }
 }
 
 test {
     useJUnitPlatform()
+    include 'study/StringTest.class'
 }
